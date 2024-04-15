@@ -3,12 +3,13 @@ name: AVD Action
 on:
   push:
     branches:
-      - actions-android
+      - develop
   pull_request:
-    branches: [ "actions-android" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
+
 
     runs-on: ubuntu-latest
     env:
