@@ -1,20 +1,27 @@
-name: AVD Action 
+name: Java CI with Maven
 
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 jobs:
   build:
-
-
     runs-on: ubuntu-latest
     env:
       ANDROID_HOME: ~/Android/Sdk
       ANDROID_SDK_ROOT: ~/Android/Sdk
+
+    steps:  
+    - name: Checkout code to mobile-automate-dev
+      uses: actions/checkout@v4.1.2
+      with:
+        ref: mobile-automate-dev
+
+    - name: Print current branch
+      run: echo "Current branch is $(git rev-parse --abbrev-ref HEAD)"
 
     - name: Set up JDK 17
       uses: actions/setup-java@v4
@@ -87,3 +94,56 @@ jobs:
       run: |
         chmod +x ~/Android/Sdk/emulator/emulator
         ~/Android/Sdk/emulator/emulator -avd /home/runner/.config/.android/avd/device-name.avd -port 5554 &
+
+
+
+    - name: Validating AVD ready
+      run: |
+        chmod +x ~/Android/Sdk/platform-tools/adb      
+        status=$(~/Android/Sdk/platform-tools/adb devices | grep -E 'device$' | wc -l)
+        while [ "$status" -eq 0 ]; do
+          echo "Emulador não está online, esperando..."
+          sleep 5
+          status=$(~/Android/Sdk/platform-tools/adb devices | grep -E 'device$' | wc -l)
+        done
+        echo "Emulador está online!"
+
+        
+
+    - name: Print settings.xml
+      run: cat $HOME/.m2/settings.xml
+
+    - name: Set up Maven
+      run: |
+        echo "<settings xmlns=\"http://maven.apache.org/SETTINGS/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd\">
+              <servers>
+                <server>
+                  <id>github</id>
+                  <username>${{secrets.GH_ACTOR}}</username>
+                  <password>${{secrets.GH_PTOKEN}}</password>
+                </server>
+              </servers>
+            </settings>" > $HOME/.m2/settings.xml
+
+    - name: Print settings.xml
+      run: cat $HOME/.m2/settings.xml  
+
+
+
+
+
+    - name: Start Appium server
+      run: appium &
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: List directory contents
+      run: cd && ls
+
+
+
+    - name: Wait for emulator to start
+      run: |
+        android-wait-for-emulator
+        adb devices
