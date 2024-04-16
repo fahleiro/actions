@@ -30,12 +30,19 @@ jobs:
 
     - name: Install KVM on Linux
       run: |
+        sudo apt-get install cpu-checker
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
     - name: Set sudo usermod to kvm
       run: |      
        sudo gpasswd -a $USER kvm
        sudo usermod -a -G kvm $USER
+       su - $USER
+
+    - name: Check user to kvm
+      run: |      
+       su - $USER
+       ls -l /dev/kvm
        cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
 
     - name: Check CPU for Virtualization Support
