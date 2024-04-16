@@ -34,7 +34,6 @@ jobs:
 
     - name: Set sudo usermod to kvm
       run: |      
-       sudo groupadd -r kvm
        sudo gpasswd -a $USER kvm
        cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
 
