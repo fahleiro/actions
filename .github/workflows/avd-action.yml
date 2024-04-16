@@ -60,6 +60,30 @@ jobs:
 
     - name: List AVD
       run: ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager list avd
+
+    - name: Validar onde foi instalado o device
+      run: |
+        # Verificar se o diretório do AVD existe
+        if [ -d "/home/runner/.config/.android/avd/device-name.avd" ]; then
+          echo "Diretório do AVD encontrado."
+        else
+          echo "ERRO: Diretório do AVD não encontrado."
+        fi
+        
+        # Verificar se o arquivo .ini do AVD existe
+        if [ -f "/home/runner/.config/.android/avd/device-name.avd.ini" ]; then
+          echo "Arquivo .ini do AVD encontrado."
+        else
+          echo "ERRO: Arquivo .ini do AVD não encontrado."
+        fi
+        
+        # Verificar as variáveis de ambiente relacionadas aos diretórios de AVD
+        echo "ANDROID_AVD_HOME: $ANDROID_AVD_HOME"
+        echo "ANDROID_SDK_HOME/avd: $ANDROID_SDK_HOME/avd"
+        echo "HOME/.android/avd: $HOME/.android/avd"
+
+
+
     
     - name: Validate AVD Creation
       run: |
