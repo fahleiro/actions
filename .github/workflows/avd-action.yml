@@ -37,7 +37,9 @@ jobs:
       run: |      
        sudo gpasswd -a $USER kvm
        sudo usermod -a -G kvm $USER
-       su - $USER
+       sudo pkill -KILL -u $USER
+       sudo su - $USER
+
 
     - name: Check user to kvm
       run: |      
