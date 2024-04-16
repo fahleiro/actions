@@ -38,6 +38,7 @@ jobs:
       run: |      
        sudo gpasswd -a $USER kvm
        sudo adduser $USER kvm
+       sudo chmod o+rw /dev/kvm
        exec $SHELL
 
     - name: Check CPU for Virtualization Support
