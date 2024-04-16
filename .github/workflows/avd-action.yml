@@ -40,12 +40,6 @@ jobs:
        sudo usermod -a -G kvm $USER
        sudo su - $USER
 
-
-    - name: Check user to kvm
-      run: |      
-       ls -l /dev/kvm
-       cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
-
     - name: Check CPU for Virtualization Support
       run: |
         egrep -c '(vmx|svm)' /proc/cpuinfo
@@ -79,6 +73,13 @@ jobs:
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
         ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-27;google_apis_playstore;x86" -d pixel_4
    
+    - name: Validate user permissions
+      run: |
+        groups $USER
+        cat /etc/group | grep kvm
+        ls -l /dev/kvm
+        cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
+           
     - name: Run Android Virtual Device (AVD)
       run: |
         chmod +x ~/Android/Sdk/emulator/emulator
