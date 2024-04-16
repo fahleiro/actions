@@ -34,12 +34,9 @@ jobs:
         sudo apt-get install cpu-checker
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
-    - name: Set sudo usermod to kvm
+    - name: Set chmod kvm
       run: |      
-       sudo gpasswd -a $USER kvm
-       sudo adduser $USER kvm
        sudo chmod o+rw /dev/kvm
-       exec $SHELL
 
     - name: Check CPU for Virtualization Support
       run: |
@@ -51,10 +48,7 @@ jobs:
       
     - name: Descomprimir Android.tar.gz
       run: tar -xzf ~/Android.tar.gz -C ~ && echo "Descompressão de Android concluída."
-      
-    - name: List directories after unzip Android.rar
-      run: find ~/Android/Sdk/cmdline-tools/latest -type d
-      
+
     - name: Install Android dependencies
       run: |
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager
@@ -68,7 +62,7 @@ jobs:
     - name: Install lib dependencies
       run: |
         sudo apt-get install libpulse0
-        sudo apt-get install libqt5xcbqpa5
+        sudo apt-get install libqt5gui5
 
     - name: Create Android Virtual Device (AVD)
       run: |
