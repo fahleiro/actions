@@ -32,6 +32,11 @@ jobs:
       run: |
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
+    - name: Set sudo usermod to kvm
+      run: |
+       sudo usermod -aG kvm $USER
+       cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
+
     - name: Check CPU for Virtualization Support
       run: |
         egrep -c '(vmx|svm)' /proc/cpuinfo
