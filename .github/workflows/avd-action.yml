@@ -27,7 +27,6 @@ jobs:
 
     - name: Install KVM on Linux
       run: |
-        sudo apt-get update
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
     - name: Check CPU for Virtualization Support
@@ -63,13 +62,6 @@ jobs:
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
         ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-27;google_apis_playstore;x86" -d pixel_4
    
-    - name: Validate adbkeys
-      run: |
-        chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdm
-        ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-27;google_apis_playstore;x86" -d pixel_4
-
-
-
     - name: Run Android Virtual Device (AVD)
       run: |
         chmod +x ~/Android/Sdk/emulator/emulator
