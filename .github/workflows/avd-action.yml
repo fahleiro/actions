@@ -42,7 +42,6 @@ jobs:
 
     - name: Check user to kvm
       run: |      
-       su - $USER
        ls -l /dev/kvm
        cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
 
