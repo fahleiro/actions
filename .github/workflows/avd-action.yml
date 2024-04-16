@@ -18,6 +18,14 @@ jobs:
     - name: List home directory
       run: cd && ls
 
+    - name: Set environments
+      run: |
+        export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest"
+        export PATH="$PATH:$ANDROID_HOME/platform-tools"
+        export PATH="$PATH:$ANDROID_HOME/emulator"
+        source ~/.bashrc
+
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
