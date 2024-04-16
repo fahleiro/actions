@@ -24,6 +24,7 @@ jobs:
         export PATH="$PATH:$ANDROID_HOME/platform-tools"
         export PATH="$PATH:$ANDROID_HOME/emulator"
         source ~/.bashrc
+        echo $PATH
 
 
     - name: Set up JDK 17
