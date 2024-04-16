@@ -37,8 +37,8 @@ jobs:
     - name: Set sudo usermod to kvm
       run: |      
        sudo gpasswd -a $USER kvm
-       sudo usermod -a -G kvm $USER
-       sudo su - $USER
+       sudo adduser $USER kvm
+       exec $SHELL
 
     - name: Check CPU for Virtualization Support
       run: |
