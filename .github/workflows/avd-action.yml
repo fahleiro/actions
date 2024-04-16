@@ -37,7 +37,6 @@ jobs:
       run: |      
        sudo gpasswd -a $USER kvm
        sudo usermod -a -G kvm $USER
-       sudo pkill -KILL -u $USER
        sudo su - $USER
 
 
