@@ -10,6 +10,7 @@ runs:
   using: 'composite'
   steps:
     - name: Set up Android environment variables
+      shell: bash
       run: |
         echo "Setting up Android environment variables"
         echo "ANDROID_HOME=~/Android/Sdk" >> $GITHUB_ENV
@@ -17,14 +18,18 @@ runs:
         echo "ANDROID_AVD_HOME=/home/runner/.config/.android/avd/" >> $GITHUB_ENV
 
     - name: Update apt
+      shell: bash
       run: sudo apt-get update
 
     - name: Install JDK 17
+      shell: bash
       run: |
         sudo apt-get install -y openjdk-17-jdk
 
     - name: Check Java version
+      shell: bash
       run: java -version
 
     - name: Display environment variables
+      shell: bash
       run: echo "ANDROID_HOME=$ANDROID_HOME, ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT, ANDROID_AVD_HOME=$ANDROID_AVD_HOME"
