@@ -114,15 +114,14 @@ jobs:
     - name: Validating AVD ready
       run: |
         chmod +x ~/Android/Sdk/platform-tools/adb      
-        status=$(~/Android/Sdk/platform-tools/adb devices)
-        while ! echo "$status" | grep -q "emulator"; do
-          echo "Emulator is not online, waiting..."
+        status=$(~/Android/Sdk/platform-tools/adb devices | grep -v "List of devices attached")
+        while echo "$status" | grep -q "offline"; do
+          echo "Emulator is offline, waiting..."
           sleep 5
-          status=$(~/Android/Sdk/platform-tools/adb devices)
+          status=$(~/Android/Sdk/platform-tools/adb devices | grep -v "List of devices attached")
         done
         echo "Emulator is online!"
         echo "$status"
-
 
     - name: Install Node.js and npm
       uses: actions/setup-node@v4
