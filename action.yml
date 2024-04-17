@@ -63,11 +63,11 @@ runs:
       run: |
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager
         yes | ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools"
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "emulator"
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;30.0.3"
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-27"
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-30;default;x86_64"
+        sudo ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools"
+        sudo ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "emulator"
+        sudo ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;30.0.3"
+        sudo ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-27"
+        sudo ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-30;default;x86_64"
 
     - name: Create AVD
       shell: bash
