@@ -15,6 +15,7 @@ jobs:
       ANDROID_HOME: ~/Android/Sdk
       ANDROID_SDK_ROOT: ~/Android/Sdk
       ANDROID_AVD_HOME: /home/runner/.config/.android/avd/
+      QT_DEBUG_PLUGINS: 1
 
     steps:  
     - name: Update packages
@@ -72,6 +73,7 @@ jobs:
         sudo apt install -y -q libxcb-render-util0
         sudo apt install -y -q libxcb-xinerama0
         sudo apt install -y -q libxcb-icccm4
+        sudo apt-get install libxcb-cursor0
 
     - name: chmod to xcb
       run: |
