@@ -20,8 +20,8 @@ jobs:
     - name: Update packages
       run: sudo apt-get update
 
-    - name: Set user as sudo
-      run: sudo usermod -aG sudo $USER
+    # - name: Set user as sudo
+    #   run: sudo usermod -aG sudo $USER
 
 
     - name: List home directory
