@@ -20,7 +20,7 @@ jobs:
         distribution: 'adopt'
     
     - name: Appium & AVD action ubuntu (a&a-u)
-      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.1.0
+      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.1.1
                   
     - name: TESTING JAVA
       run: java -version
