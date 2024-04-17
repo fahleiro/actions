@@ -65,12 +65,6 @@ jobs:
         sudo apt-get install libqt5gui5
         sudo apt-get install libx11-xcb1
 
-    - name: Install Qt Wayland support package
-      run: sudo apt-get install qt5-wayland
-
-    - name: Set Qt platform to Wayland
-      run: export QT_QPA_PLATFORM=wayland
-        
     - name: Create Android Virtual Device (AVD)
       run: |
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
