@@ -3,9 +3,9 @@ name: Appium & AVD action ubuntu (a&a-u)
 on:
     push:
       branches:
-        - main
+        - develop
     pull_request:
-      branches: [ "main" ]
+      branches: [ "develop" ]
 
 jobs:
   build:
