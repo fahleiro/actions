@@ -46,7 +46,7 @@ jobs:
       run: appium driver install uiautomator2
 
     - name: Curl cmdline-tools from Android.tar.gz
-      run: cd && curl -O -L https://github.com/fahleiro/actions/releases/download/android/Android.tar.gz
+      run: cd && curl -O -L https://github.com/fahleiro/appium-avd-action-ubuntu/releases/download/appium-avd-action-ubuntu-1.0.0/Android.tar.gz
       
     - name: Descomprimir Android.tar.gz
       run: tar -xzf ~/Android.tar.gz -C ~ && echo "Descompressão de Android concluída."
