@@ -11,6 +11,7 @@ env:
   ANDROID_AVD_HOME: "/home/runner/.config/.android/avd/"
 
 runs:
+  shell: bash
   steps:
     - name: "Update packages"
       run: "sudo apt-get update"
