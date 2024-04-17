@@ -88,7 +88,7 @@ jobs:
     - name: Create Android Virtual Device (AVD)
       run: |
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
-        ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-27;google_apis_playstore;x86" -d pixel_4
+        ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-30;default;x86_64" -d pixel_4
    
     - name: Validate user permissions
       run: |
