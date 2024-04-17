@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Appium & AVD action ubuntu (a&a-u)
-      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.0.5
-            
+    - name: Setup Android and JDK 17
+      uses: fahleiro/appium-avd-action-ubuntu@test-setup-android-jdk-17     
     
-    - name: Testing adb
-      run: adb devices
+    - name: TESTING JAVA
+      run: java -version
