@@ -1,3 +1,15 @@
+name: "Appium & AVD action ubuntu (a&a-u)"
+description: "This action installs and runs an AVD and Appium using ubuntu-latest"
+author: "Gabriel Reinisch Faleiro"
+branding:
+  icon: "terminal"
+  color: "purple"
+
+env:
+  ANDROID_HOME: "~/Android/Sdk"
+  ANDROID_SDK_ROOT: "~/Android/Sdk"
+  ANDROID_AVD_HOME: "/home/runner/.config/.android/avd/"
+
 runs:
   using: "composite"
   steps:
