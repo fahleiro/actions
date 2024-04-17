@@ -38,9 +38,9 @@ jobs:
         sudo apt-get install cpu-checker
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
-    # - name: Set chmod kvm
-    #   run: |      
-    #    sudo chmod o+rw /dev/kvm
+    - name: Set chmod kvm
+      run: |      
+       sudo chmod o+rw /dev/kvm
 
     # - name: Check CPU for Virtualization Support
     #   run: |
