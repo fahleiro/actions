@@ -65,9 +65,11 @@ jobs:
         sudo apt-get install libqt5gui5
         sudo apt-get install libx11-xcb1
 
-    - name: find xcb
+    - name: chmod to xcb
       run: |
-        sudo find / -name libqxcb.so
+        sudocchmod +x ~/Android/Sdk/emulator/lib64/qt/plugins/platforms/libqxcb.so
+        sudo chmod +x /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so
+        
 
     - name: Create Android Virtual Device (AVD)
       run: |
