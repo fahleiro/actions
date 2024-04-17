@@ -89,12 +89,12 @@ jobs:
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
         ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager create avd -n device-name -k "system-images;android-30;default;x86_64" -d pixel_4
    
-    - name: Validate user permissions
-      run: |
-        groups $USER
-        cat /etc/group | grep kvm
-        ls -l /dev/kvm
-        cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
+    # - name: Validate user permissions
+    #   run: |
+    #     groups $USER
+    #     cat /etc/group | grep kvm
+    #     ls -l /dev/kvm
+    #     cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
 
     #- name: Set up virtual display (Xvfb)
     #  run: sudo apt-get install -y xvfb
