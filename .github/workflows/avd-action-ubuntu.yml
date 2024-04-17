@@ -1,4 +1,4 @@
-name: Appium & AVD action ubuntu (a&a-u)
+name: DEVELOP - Appium & AVD action ubuntu (a&a-u)
 
 on:
     push:
