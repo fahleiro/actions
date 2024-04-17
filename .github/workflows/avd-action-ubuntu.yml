@@ -108,7 +108,7 @@ jobs:
       run: |
         chmod +x ~/Android/Sdk/emulator/emulator
         chmod +x ~/Android/Sdk/emulator
-        ~/Android/Sdk/emulator/emulator -avd device-name -port 5554 -no-window &
+        ~/Android/Sdk/emulator/emulator -avd device-name -port 5554 -no-window -no-audio &
 
     - name: Validating AVD ready
       run: |
