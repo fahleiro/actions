@@ -10,6 +10,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      ANDROID_HOME: ~/Android/Sdk
+      ANDROID_SDK_ROOT: ~/Android/Sdk
+      ANDROID_AVD_HOME: /home/runner/.config/.android/avd/
 
     steps:
     - name: Set up JDK 17
@@ -23,7 +27,7 @@ jobs:
           java -version
     
     - name: Appium & AVD action ubuntu (a&a-u)
-      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.1.2
+      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.1.1
             
                   
     - name: TESTING ANDROID ENVIRONMENTS
