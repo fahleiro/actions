@@ -12,6 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+
+    - name: Install and Set JDK 17 manually
+      run: |
+        sudo apt-get install -y openjdk-17-jdk
+        sudo update-alternatives --set java /usr/lib/jvm/java-17-openjdk-amd64/bin/java
+        sudo update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-amd64/bin/javac
+    
     - name: Appium & AVD action ubuntu (a&a-u)
       uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.1.0
                   
