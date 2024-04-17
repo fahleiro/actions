@@ -67,7 +67,7 @@ jobs:
 
     - name: chmod to xcb
       run: |
-        sudocchmod +x ~/Android/Sdk/emulator/lib64/qt/plugins/platforms/libqxcb.so
+        sudo chmod +x ~/Android/Sdk/emulator/lib64/qt/plugins/platforms/libqxcb.so
         sudo chmod +x /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so
         
 
