@@ -114,8 +114,8 @@ jobs:
       run: |
         chmod +x ~/Android/Sdk/platform-tools/adb      
         status=$(~/Android/Sdk/platform-tools/adb devices | grep -v "List of devices attached")
-        while echo "$status" | grep -q "offline"; do
-          echo "Emulator is offline, waiting..."
+        while ! echo "$status" | grep -q "device"; do
+          echo "Emulator is not ready, waiting..."
           sleep 5
           status=$(~/Android/Sdk/platform-tools/adb devices | grep -v "List of devices attached")
         done
