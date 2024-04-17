@@ -1,4 +1,4 @@
-name: AVD Action
+name: AVD Action ubuntu
 
 on:
     workflow_dispatch:
