@@ -13,7 +13,7 @@ jobs:
     
     steps:
     - name: Setup Android and JDK 17
-      uses: fahleiro/appium-avd-action-ubuntu@test-setup-android-jdk-17     
+      uses: fahleiro/appium-avd-action-ubuntu@test-setup-android-jdk-17-shell
     
     - name: TESTING JAVA
       run: java -version
