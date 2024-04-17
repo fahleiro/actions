@@ -13,5 +13,4 @@ jobs:
     
     steps:
     - name: Appium & AVD action ubuntu (a&a-u)
-      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu
-          
+      uses: fahleiro/appium-avd-action-ubuntu@appium-avd-action-ubuntu-1.0.2
