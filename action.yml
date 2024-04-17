@@ -1,7 +1,11 @@
 name: 'Setup Android and JDK 17'
-
 description: 'Set up Android environment variables, update apt, install JDK 17, and display environment variables.'
+author: Gabriel Reinisch Faleiro
 
+branding:
+  icon: "terminal"
+  color: "purple"
+  
 runs:
   using: 'composite'
   steps:
