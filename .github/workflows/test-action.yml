@@ -3,9 +3,9 @@ name: TEST - AVD Action ubuntu
 on:
   push:
     branches:
-      - develop
+      - main
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "main" ]
 
 jobs:
   build:
