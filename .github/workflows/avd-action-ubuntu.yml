@@ -42,10 +42,10 @@ jobs:
       run: |      
        sudo chmod o+rw /dev/kvm
 
-    - name: Check CPU for Virtualization Support
-      run: |
-        egrep -c '(vmx|svm)' /proc/cpuinfo
-        sudo kvm-ok      
+    # - name: Check CPU for Virtualization Support
+    #   run: |
+    #     egrep -c '(vmx|svm)' /proc/cpuinfo
+    #     sudo kvm-ok      
 
     - name: Curl cmdline-tools from Android.tar.gz
       run: cd && curl -O -L https://github.com/fahleiro/actions/releases/download/android/Android.tar.gz
