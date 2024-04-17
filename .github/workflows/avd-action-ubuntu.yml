@@ -62,7 +62,7 @@ jobs:
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "emulator"
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;30.0.3"
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-27"
-        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-27;google_apis_playstore;x86"
+        ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-27;google_apis;x86"
         
     #- name: Install lib dependencies
       #run: |
