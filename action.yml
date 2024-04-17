@@ -25,11 +25,3 @@ runs:
       shell: bash
       run: |
         sudo apt-get install -y openjdk-17-jdk
-
-    - name: Check Java version
-      shell: bash
-      run: java -version
-
-    - name: Display environment variables
-      shell: bash
-      run: echo "ANDROID_HOME=$ANDROID_HOME, ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT, ANDROID_AVD_HOME=$ANDROID_AVD_HOME"
