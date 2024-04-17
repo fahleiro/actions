@@ -67,7 +67,7 @@ jobs:
 
     - name: find xcb
       run: |
-        find / -name libqxcb.so
+        sudo find / -name libqxcb.so
 
     - name: Create Android Virtual Device (AVD)
       run: |
