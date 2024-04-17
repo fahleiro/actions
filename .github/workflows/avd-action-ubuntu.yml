@@ -64,25 +64,25 @@ jobs:
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-27"
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-27;google_apis_playstore;x86"
         
-    - name: Install lib dependencies
-      run: |
-        sudo apt-get install libpulse0
-        sudo apt-get install libqt5gui5
-        sudo apt-get install libx11-xcb1
-        sudo apt update -q
-        sudo apt install -y -q build-essential libgl1-mesa-dev
-        sudo apt install -y -q libxkbcommon-x11-0
-        sudo apt install -y -q libxcb-image0
-        sudo apt install -y -q libxcb-keysyms1
-        sudo apt install -y -q libxcb-render-util0
-        sudo apt install -y -q libxcb-xinerama0
-        sudo apt install -y -q libxcb-icccm4
-        sudo apt-get install libxcb-cursor0
+    #- name: Install lib dependencies
+      #run: |
+        #sudo apt-get install libpulse0
+        #sudo apt-get install libqt5gui5
+        #sudo apt-get install libx11-xcb1
+        #sudo apt update -q
+        #sudo apt install -y -q build-essential libgl1-mesa-dev
+        #sudo apt install -y -q libxkbcommon-x11-0
+        #sudo apt install -y -q libxcb-image0
+        #sudo apt install -y -q libxcb-keysyms1
+        #sudo apt install -y -q libxcb-render-util0
+        #sudo apt install -y -q libxcb-xinerama0
+        #sudo apt install -y -q libxcb-icccm4
+        #sudo apt-get install libxcb-cursor0
 
-    - name: chmod to xcb
-      run: |
-        sudo chmod +x ~/Android/Sdk/emulator/lib64/qt/plugins/platforms/libqxcb.so
-        sudo chmod +x /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so
+    #- name: chmod to xcb
+      #run: |
+        #sudo chmod +x ~/Android/Sdk/emulator/lib64/qt/plugins/platforms/libqxcb.so
+        #sudo chmod +x /usr/lib/x86_64-linux-gnu/qt5/plugins/platforms/libqxcb.so
         
 
     - name: Create Android Virtual Device (AVD)
@@ -97,13 +97,13 @@ jobs:
         ls -l /dev/kvm
         cat /lib/udev/rules.d/50-udev-default.rules | grep kvm
 
-    - name: Set up virtual display (Xvfb)
-      run: sudo apt-get install -y xvfb
-    - name: Start Xvfb
-      run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+    #- name: Set up virtual display (Xvfb)
+    #  run: sudo apt-get install -y xvfb
+    #- name: Start Xvfb
+    #  run: Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
-    - name: Export DISPLAY
-      run: export DISPLAY=:99
+    #- name: Export DISPLAY
+    #  run: export DISPLAY=:99
     
     - name: Run Android Virtual Device (AVD)
       run: |
@@ -114,13 +114,15 @@ jobs:
     - name: Validating AVD ready
       run: |
         chmod +x ~/Android/Sdk/platform-tools/adb      
-        status=$(~/Android/Sdk/platform-tools/adb devices | grep -E 'device$' | wc -l)
-        while [ "$status" -eq 0 ]; do
-          echo "Emulador não está online, esperando..."
+        status=$(~/Android/Sdk/platform-tools/adb devices)
+        while ! echo "$status" | grep -q "emulator"; do
+          echo "Emulator is not online, waiting..."
           sleep 5
-          status=$(~/Android/Sdk/platform-tools/adb devices | grep -E 'device$' | wc -l)
+          status=$(~/Android/Sdk/platform-tools/adb devices)
         done
-        echo "Emulador está online!"
+        echo "Emulator is online!"
+        echo "$status"
+
 
     - name: Install Node.js and npm
       uses: actions/setup-node@v4
