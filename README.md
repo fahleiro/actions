@@ -1,4 +1,4 @@
-![App Screenshot](https://i.imgur.com/x6WLKk2.png)
+![App Screenshot](https://i.imgur.com/KyKiNqX.png)
 ### You will find here miltiple ways to run APPIUM and AVD together
 
 ### **GitHub Actions**
