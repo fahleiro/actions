@@ -1,18 +1,17 @@
 name: DEVELOP - Appium & AVD action ubuntu (a&a-u)
 
 on:
-    push:
-      branches:
-        - develop
-    pull_request:
-      branches: [ "develop" ]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ANDROID_HOME: ~/Android/Sdk
-      ANDROID_SDK_ROOT: ~/Android/Sdk
+      ANDROID_HOME: /home/runner/Android/Sdk
+      ANDROID_SDK_ROOT: /home/runner/Android/Sdk
       ANDROID_AVD_HOME: /home/runner/.config/.android/avd/
 
     steps:  
@@ -29,11 +28,9 @@ jobs:
       run: |
         sudo apt-get install cpu-checker
         sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
-
     - name: Set chmod kvm
       run: |      
        sudo chmod o+rw /dev/kvm    
-
     - name: Install Node.js and npm
       uses: actions/setup-node@v4
       with:
@@ -60,7 +57,6 @@ jobs:
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;30.0.3"
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-27"
         ~/Android/Sdk/cmdline-tools/latest/bin/sdkmanager --install "system-images;android-30;default;x86_64"
-
     - name: Create Android Virtual Device (AVD)
       run: |
         chmod +x ~/Android/Sdk/cmdline-tools/latest/bin/avdmanager
@@ -71,7 +67,7 @@ jobs:
         chmod +x ~/Android/Sdk/emulator/emulator
         chmod +x ~/Android/Sdk/emulator
         ~/Android/Sdk/emulator/emulator -avd device-name -port 5554 -no-window -no-audio -no-boot-anim &
-
+        
     - name: Validating AVD ready
       run: |
         chmod +x ~/Android/Sdk/platform-tools/adb      
@@ -83,6 +79,6 @@ jobs:
         done
         echo "Emulator is online!"
         echo "$status"
-
+        
     - name: Run Appium
-      run: appium &    
+      run: appium &
